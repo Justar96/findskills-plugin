@@ -1,6 +1,6 @@
 {
   "name": "findskills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "One skill to find and load every other skill on demand from the FindSkills hub (skills.sh + GitHub + your saved library), keeping skill descriptions out of your context.",
   "author": { "name": "Justar96" },
   "homepage": "https://findskills.cc",

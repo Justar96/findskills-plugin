@@ -3,7 +3,7 @@ name: findskills
 description: Finds and loads agent skills on demand from the user's FindSkills profile (the skills they chose) and the community (skills.sh, GitHub), instead of keeping them installed. Use before starting any specialized task, such as working with a specific framework, library, API, cloud service or file format, or doing a design, testing, debugging, review, deployment, data or writing workflow. Also use whenever the user mentions their skills or profile, asks "is there a skill for…", or wants to save or import one. Skip it for trivial edits and general questions.
 license: MIT
 metadata:
-  version: 0.1.0
+  version: 0.1.1
   homepage: https://findskills.cc
 ---
 
