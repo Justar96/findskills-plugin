@@ -1,0 +1,31 @@
+{
+  "name": "findskills",
+  "version": "0.1.2",
+  "description": "One skill that finds and loads every other skill on demand from your FindSkills profile (your own skills, kept in the cloud) and the community (skills.sh, GitHub), so skill descriptions stay out of your context.",
+  "author": {
+    "name": "Justar96",
+    "url": "https://github.com/Justar96"
+  },
+  "homepage": "https://findskills.cc",
+  "repository": "https://github.com/Justar96/findskills-plugin",
+  "license": "MIT",
+  "keywords": ["skills", "skill-hub", "skills.sh", "context", "discovery"],
+  "skills": "./skills/",
+  "hooks": [],
+  "interface": {
+    "displayName": "FindSkills",
+    "shortDescription": "Load skills on demand from your profile",
+    "longDescription": "FindSkills keeps your skills in one cloud profile instead of your agent's context. This plugin adds one small skill: when a task needs a specialized skill, Codex searches your profile first, then the community (skills.sh and GitHub), and loads the best match.\n\nThe skill runs the findskills CLI. Install it once per machine with `curl -fsSL https://findskills.cc/install.sh | sh` (or `npm i -g @findskills/cli`), then run `findskills login`.",
+    "developerName": "Justar96",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://findskills.cc",
+    "defaultPrompt": [
+      "Find a skill for this task.",
+      "Is there a skill for writing Playwright tests?",
+      "Show the skills in my FindSkills profile."
+    ],
+    "logo": "./assets/icon.png",
+    "composerIcon": "./assets/icon.png"
+  }
+}

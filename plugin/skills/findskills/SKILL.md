@@ -1,6 +1,6 @@
 ---
 name: findskills
-description: Finds and loads agent skills on demand from the user's FindSkills profile (the skills they chose) and the community (skills.sh, GitHub), instead of keeping them installed. Use before starting any specialized task, such as working with a specific framework, library, API, cloud service or file format, or doing a design, testing, debugging, review, deployment, data or writing workflow. Also use whenever the user mentions their skills or profile, asks "is there a skill for…", or wants to save or import one. Skip it for trivial edits and general questions.
+description: Loads the right skill for a task from the user's FindSkills profile (their own skills, kept in the cloud, not installed) or from the community. Use when the user names a skill you don't have ("use humanizer", "/break"), mentions their skills or profile, or asks "is there a skill for…". Also use once, at the start of a task where a dedicated skill plausibly exists: a specific service, API or file format, or a design, review, deployment, debugging or writing workflow. Not for routine edits, follow-ups in a task you've already routed, or general questions.
 license: MIT
 metadata:
   version: 0.1.2
@@ -14,52 +14,47 @@ task needs, then follow it.
 
 ## Flow
 
-1. **Search** with the technology and the activity, in 2–5 words:
+1. **Route** the request as one plain sentence: what the user wants, in their words. Never
+   include code, file contents, paths or secrets: the sentence leaves the machine (the
+   FindSkills hub and its judge, TypeSafe, read it). If the user named a skill, keep their
+   phrasing ("use the break skill on the pricing card") so that skill wins.
 
    ```bash
-   findskills search "playwright e2e testing"
+   findskills use "deploy this service to railway"
    ```
 
-   Results come in two sections:
-   - `Your profile:` skills the user chose (`★`), including their own private skills
-     (`@login/skills/…`). Prefer these.
-   - `Discover (not in your profile):` community skills, ranked by relevance and installs.
+   - One skill clearly fits: it prints `using <id> (fit 98%, your profile)` and the
+     skill's `SKILL.md`. Go to step 2.
+   - Several skills fit about equally, or only community skills do: it lists them and
+     loads nothing. Pick one by description, load it with `findskills get <id>`, and say
+     it's a community skill if it is; or carry on without one.
+   - `No skill fits`: carry on without a skill. An unrelated skill costs context and can
+     mislead you.
 
-2. **Pick** by description, not by name alone. `[cached]` means it loads instantly.
-   Results are ranked, not vetted: if none clearly fits the task, stop here and carry on
-   without a skill. An unrelated skill costs context and can mislead you.
-
-3. **Load** it (pass several IDs to load more than one in one call):
-
-   ```bash
-   findskills get anthropics/skills/webapp-testing
-   ```
-
-   This prints the skill's `SKILL.md` and the local path that holds its other files.
-
-4. **Follow** the printed `SKILL.md` as if the skill were installed. When it points to
-   other files (`references/`, `scripts/`, `examples/`), read them from that path, and
-   only when the instructions call for them.
+2. **Follow** the printed `SKILL.md` as if the skill were installed. When it points to
+   other files (`references/`, `scripts/`, `examples/`), read them from the printed path,
+   and only when the instructions call for them.
 
 Each command ends with a `→` line that names the next step.
 
 ## Rules of thumb
 
 - Tell the user in one short line which skill you are using.
-- Run one search per distinct sub-task. If the results look unrelated, retry once with
-  broader terms ("deploy" → "ci cd"). If that also fails, carry on without a skill.
+- Route once per distinct sub-task, not per message.
 - A loaded skill stays loaded for the whole session, so don't fetch it again. If your
-  context was cleared, `findskills get` returns it instantly from the cache.
-- Load at most 2–3 skills for one task.
-- If a Discover skill helped, offer once to add it to the user's profile. Don't save
+  context was cleared, `findskills get <id>` returns it instantly from the cache.
+- One skill per task is normal; never more than three.
+- If a community skill helped, offer once to add it to the user's profile. Don't save
   without asking.
 
 ## Other commands
 
 | Command | Use |
 | --- | --- |
-| `findskills list` | The user's whole profile, grouped by category. Use it when they say "my skills". |
+| `findskills search "<words>"` | Browse matches with their fit: the profile first (`★`), then community skills |
 | `findskills search "<words>" --profile` | Search only the user's profile |
+| `findskills list` | The user's whole profile, grouped by category. Use it when they say "my skills". |
+| `findskills get <id>...` | Load skills by ID (several in one call) |
 | `findskills info <id>` | Description, category, source and files, without downloading |
 | `findskills read <id> [file]` | Print one file of a skill (default `SKILL.md`) |
 | `findskills save <id> [--category <slug>]` | Add a skill to the profile (after the user agrees) |
@@ -69,8 +64,8 @@ Each command ends with a `→` line that names the next step.
 | `findskills pull` | Download the whole profile into the local cache (new machine, offline work) |
 
 IDs look like `owner/repo/skill`. `owner/repo@skill`, `https://skills.sh/owner/repo/skill` and a
-GitHub link to the skill's folder also work. Add `--json` to any command for structured output. If a command says
-`not logged in`, search still covers community skills. Ask the user to run
+GitHub link to the skill's folder also work. Add `--json` to any command for structured output.
+Signed out, `use` and `search` match community skills by keyword only. Ask the user to run
 `findskills login` to get their profile.
 
 ## Safety
