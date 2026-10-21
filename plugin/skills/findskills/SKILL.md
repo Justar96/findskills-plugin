@@ -3,7 +3,7 @@ name: findskills
 description: Loads the right skill for a task from the user's FindSkills profile (their own skills, kept in the cloud, not installed) or from the community. Use when the user names a skill you don't have ("use humanizer", "/break"), mentions their skills or profile, or asks "is there a skill for…". Also use once, at the start of a task where a dedicated skill plausibly exists: a specific service, API or file format, or a design, review, deployment, debugging or writing workflow. Not for routine edits, follow-ups in a task you've already routed, or general questions.
 license: MIT
 metadata:
-  version: 0.1.2
+  version: 0.1.3
   homepage: https://findskills.cc
 ---
 
