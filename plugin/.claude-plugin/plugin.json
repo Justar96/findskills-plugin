@@ -1,0 +1,10 @@
+{
+  "name": "findskills",
+  "version": "0.1.0",
+  "description": "One skill to find and load every other skill on demand from the FindSkills hub (skills.sh + GitHub + your saved library), keeping skill descriptions out of your context.",
+  "author": { "name": "Justar96" },
+  "homepage": "https://findskills.cc",
+  "repository": "https://github.com/Justar96/findskills-plugin",
+  "license": "MIT",
+  "keywords": ["skills", "skill-hub", "skills.sh", "context", "discovery"]
+}
