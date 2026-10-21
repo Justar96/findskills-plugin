@@ -3,7 +3,7 @@ name: findskills
 description: Finds and loads agent skills on demand from the user's FindSkills profile (the skills they chose) and the community (skills.sh, GitHub), instead of keeping them installed. Use before starting any specialized task, such as working with a specific framework, library, API, cloud service or file format, or doing a design, testing, debugging, review, deployment, data or writing workflow. Also use whenever the user mentions their skills or profile, asks "is there a skill for…", or wants to save or import one. Skip it for trivial edits and general questions.
 license: MIT
 metadata:
-  version: 0.1.1
+  version: 0.1.2
   homepage: https://findskills.cc
 ---
 
@@ -26,6 +26,8 @@ task needs, then follow it.
    - `Discover (not in your profile):` community skills, ranked by relevance and installs.
 
 2. **Pick** by description, not by name alone. `[cached]` means it loads instantly.
+   Results are ranked, not vetted: if none clearly fits the task, stop here and carry on
+   without a skill. An unrelated skill costs context and can mislead you.
 
 3. **Load** it (pass several IDs to load more than one in one call):
 
@@ -63,7 +65,7 @@ Each command ends with a `→` line that names the next step.
 | `findskills save <id> [--category <slug>]` | Add a skill to the profile (after the user agrees) |
 | `findskills unsave <id>` | Remove a skill from the profile |
 | `findskills import <github-url>` | Add a GitHub repo's skills, or one folder's (`…/tree/main/skills/x`), to the profile |
-| `findskills push <dir>` / `findskills push --scan` | Upload the user's local skill folders to their profile as private skills. Only when the user asks. |
+| `findskills push <dir>` / `findskills push --scan` | Upload the user's local skill folders to their profile as private skills. Only when the user asks; run it with `--dry-run` first and show them the list. |
 | `findskills pull` | Download the whole profile into the local cache (new machine, offline work) |
 
 IDs look like `owner/repo/skill`. `owner/repo@skill`, `https://skills.sh/owner/repo/skill` and a

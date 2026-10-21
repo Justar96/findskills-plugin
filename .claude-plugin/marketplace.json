@@ -3,14 +3,14 @@
   "owner": { "name": "Justar96" },
   "metadata": {
     "description": "FindSkills: one skill that loads every other skill on demand.",
-    "version": "0.1.1"
+    "version": "0.1.2"
   },
   "plugins": [
     {
       "name": "findskills",
       "source": "./plugin",
       "description": "Search and load agent skills on demand from the FindSkills hub instead of installing them all.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "category": "productivity",
       "skills": ["./skills/findskills"]
     }
