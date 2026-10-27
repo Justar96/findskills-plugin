@@ -51,7 +51,7 @@ Each command ends with a `→` line that names the next step.
 
 | Command | Use |
 | --- | --- |
-| `findskills search "<words>"` | Browse matches with their fit: the profile first (`★`), then community skills |
+| `findskills search "<words>"` | Search the profile first (`★`), adding community skills only when nothing in the profile fits (`--all` always adds community) |
 | `findskills search "<words>" --profile` | Search only the user's profile |
 | `findskills list` | The user's whole profile, grouped by category. Use it when they say "my skills". |
 | `findskills get <id>...` | Load skills by ID (several in one call) |
