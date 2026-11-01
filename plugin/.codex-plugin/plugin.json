@@ -1,6 +1,6 @@
 {
   "name": "findskills",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "One skill that loads every other skill on demand from your FindSkills profile (your own skills, kept in the cloud), so skill descriptions stay out of your context. Finds community skills (skills.sh, GitHub) when you ask for one.",
   "author": {
     "name": "Justar96",
