@@ -1,7 +1,7 @@
 {
   "name": "findskills",
-  "version": "0.1.4",
-  "description": "One skill that finds and loads every other skill on demand from your FindSkills profile (your own skills, kept in the cloud) and the community (skills.sh, GitHub), so skill descriptions stay out of your context.",
+  "version": "0.1.5",
+  "description": "One skill that loads every other skill on demand from your FindSkills profile (your own skills, kept in the cloud), so skill descriptions stay out of your context. Finds community skills (skills.sh, GitHub) when you ask for one.",
   "author": {
     "name": "Justar96",
     "url": "https://github.com/Justar96"
@@ -15,7 +15,7 @@
   "interface": {
     "displayName": "FindSkills",
     "shortDescription": "Load skills on demand from your profile",
-    "longDescription": "FindSkills keeps your skills in one cloud profile instead of your agent's context. This plugin adds one small skill: when a task needs a specialized skill, Codex searches your profile first, then the community (skills.sh and GitHub), and loads the best match.\n\nThe skill runs the findskills CLI. Install it once per machine with `curl -fsSL https://findskills.cc/install.sh | sh` (or `npm i -g @findskills/cli`), then run `findskills login`.",
+    "longDescription": "FindSkills keeps your skills in one cloud profile instead of your agent's context. This plugin adds one small skill: when a task needs a specialized skill, Codex loads the one from your profile that fits. When you ask for a skill you don't have, it searches the community (skills.sh and GitHub) separately.\n\nThe skill runs the findskills CLI. Install it once per machine with `curl -fsSL https://findskills.cc/install.sh | sh` (or `npm i -g @findskills/cli`), then run `findskills login`.",
     "developerName": "Justar96",
     "category": "Productivity",
     "capabilities": ["Read", "Write"],
@@ -23,7 +23,8 @@
     "defaultPrompt": [
       "Find a skill for this task.",
       "Is there a skill for writing Playwright tests?",
-      "Show the skills in my FindSkills profile."
+      "Show the skills in my FindSkills profile.",
+      "Upload my local skills to my FindSkills profile."
     ],
     "logo": "./assets/icon.png",
     "composerIcon": "./assets/icon.png"

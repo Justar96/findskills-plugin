@@ -1,8 +1,9 @@
 # FindSkills plugin
 
-One skill that finds and loads every other agent skill on demand from your
-[FindSkills](https://findskills.cc) profile and the community (skills.sh, GitHub), so you don't
-keep them all installed or in your agent's context.
+One skill that loads every other agent skill on demand from your
+[FindSkills](https://findskills.cc) profile, so you don't keep them all installed or in your
+agent's context. When you ask for a skill you don't have, it searches the community (skills.sh,
+GitHub) separately.
 
 ## Install
 
